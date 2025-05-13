@@ -140,9 +140,13 @@ const PropertyMap = () => {
         className="w-full h-full bg-slate-100 relative overflow-hidden"
       >
         <img 
-          src="/mapa-estatico-pedro-andre.jpg" 
-          alt="Mapa Estático" 
+          src="/imobiliaria1/mapa-estatico-pedro-andre.png" 
+          alt="Mapa de São Paulo" 
           className="w-full h-full object-cover"
+          onError={(e) => {
+            // Fallback para uma imagem genérica se a imagem do mapa falhar
+            (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1569336415962-a4bd9f69c07b?auto=format&fit=crop&q=80&w=2070";
+          }}
         />
         
         {/* Marcadores de imóveis no mapa */}

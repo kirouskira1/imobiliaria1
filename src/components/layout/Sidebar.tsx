@@ -152,12 +152,12 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               />
             </SidebarGroup>
             
-            <SidebarItem 
-              icon={<MessageCircle className="h-5 w-5" />} 
-              label="Chat" 
-              to="/chat"
-              active={currentPath === "/chat"} 
-            />
+              <SidebarItem 
+                icon={<MessageCircle className="h-5 w-5" />} 
+                label="Chat" 
+                to="/chat"
+                active={currentPath === "/chat"} 
+              />
             
             <div className="pt-4 border-t border-slate-200 space-y-1">
               <SidebarItem 

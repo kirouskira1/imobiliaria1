@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import PropertyDetails from "../property/PropertyDetails";
 import { useToast } from "@/hooks/use-toast";
@@ -219,47 +222,48 @@ const FeaturedProperties = () => {
 
       {/* Dialog de agendamento de visita */}
       <Dialog open={showScheduleDialog} onOpenChange={setShowScheduleDialog}>
-        <DialogContent className="sm:max-w-md" aria-describedby="schedule-dialog-description">
-          <div id="schedule-dialog-description" className="text-muted-foreground mb-2">
-            Escolha a data e horário para visitar o imóvel
-          </div>
+        <DialogContent className="sm:max-w-md" aria-describedby="featured-schedule-dialog-description">
+          <DialogHeader>
+            <DialogTitle>Agendar Visita</DialogTitle>
+            <DialogDescription id="featured-schedule-dialog-description">
+              Escolha a data e horário para visitar o imóvel
+            </DialogDescription>
+          </DialogHeader>
           <div className="space-y-4">
-            <h2 className="text-xl font-bold">Agendar Visita</h2>
-            <div className="space-y-4 py-4">
-              <div className="space-y-2">
-                <label htmlFor="date" className="text-sm font-medium">
-                  Data
-                </label>
-                <input 
-                  type="date" 
-                  id="date" 
-                  value={scheduleDate}
-                  onChange={(e) => setScheduleDate(e.target.value)}
-                  className="w-full rounded-md border border-input bg-background px-3 py-2"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="time" className="text-sm font-medium">
-                  Horário
-                </label>
-                <select 
-                  id="time" 
-                  value={scheduleTime}
-                  onChange={(e) => setScheduleTime(e.target.value)}
-                  className="w-full rounded-md border border-input bg-background px-3 py-2"
-                  required
-                >
-                  <option value="">Selecione um horário</option>
-                  <option value="09:00">09:00</option>
-                  <option value="10:00">10:00</option>
-                  <option value="11:00">11:00</option>
-                  <option value="14:00">14:00</option>
-                  <option value="15:00">15:00</option>
-                  <option value="16:00">16:00</option>
-                </select>
-              </div>
+            <div className="space-y-2">
+              <label htmlFor="date" className="text-sm font-medium">
+                Data
+              </label>
+              <input 
+                type="date" 
+                id="date" 
+                value={scheduleDate}
+                onChange={(e) => setScheduleDate(e.target.value)}
+                className="w-full rounded-md border border-input bg-background px-3 py-2"
+                required
+              />
             </div>
+            <div className="space-y-2">
+              <label htmlFor="time" className="text-sm font-medium">
+                Horário
+              </label>
+              <select 
+                id="time" 
+                value={scheduleTime}
+                onChange={(e) => setScheduleTime(e.target.value)}
+                className="w-full rounded-md border border-input bg-background px-3 py-2"
+                required
+              >
+                <option value="">Selecione um horário</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+              </select>
+            </div>
+            
             <div className="flex justify-end gap-2 mt-4">
               <Button variant="outline" onClick={() => setShowScheduleDialog(false)}>
                 Cancelar

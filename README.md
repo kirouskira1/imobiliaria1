@@ -16,10 +16,10 @@ Pré-requisitos: Node.js & npm instalados ([instale com nvm](https://github.com/
  cd <NOME_DO_PROJETO>
 
 # 3. Instale as dependências
- npm i
+npm i
 
 # 4. Inicie o servidor de desenvolvimento
- npm run dev
+npm run dev
 ```
 
 ## Tecnologias utilizadas
