@@ -10,10 +10,10 @@ Pré-requisitos: Node.js & npm instalados ([instale com nvm](https://github.com/
 
 ```sh
 # 1. Clone o repositório
- git clone <SEU_GIT_URL>
+git clone https://github.com/kirouskira1/Imobiliariateste1.git
 
 # 2. Acesse a pasta do projeto
- cd <NOME_DO_PROJETO>
+cd Imobiliariateste1
 
 # 3. Instale as dependências
 npm i
@@ -36,11 +36,15 @@ O projeto segue uma arquitetura de componentes reutilizáveis, com rotas para p�
 
 ## Deploy
 
-Você pode fazer deploy em qualquer serviço que suporte projetos React/Vite, como Vercel, Netlify, Render, etc.
+O projeto está configurado para deploy automático no GitHub Pages.
+Acesse: https://kirouskira1.github.io/Imobiliariateste1/
 
 ## Domínio personalizado
 
-Basta configurar o domínio no serviço de deploy escolhido, apontando para o build do projeto.
+Para configurar um domínio personalizado:
+1. Acesse as configurações do repositório
+2. Vá para a seção "Pages"
+3. Adicione seu domínio personalizado
 
 ---
 
