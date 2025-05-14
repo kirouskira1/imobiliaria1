@@ -16,6 +16,7 @@ import AgendarVisitaPage from "./pages/AgendarVisitaPage";
 import ChatPage from "./pages/ChatPage";
 import ConfiguracoesPage from "./pages/ConfiguracoesPage";
 import AjudaPage from "./pages/AjudaPage";
+import PropertyPage from "./pages/PropertyPage";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/configuracoes" element={<ConfiguracoesPage />} />
           <Route path="/ajuda" element={<AjudaPage />} />
+          <Route path="/imovel/:id" element={<PropertyPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

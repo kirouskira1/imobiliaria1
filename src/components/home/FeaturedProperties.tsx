@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Bed, Bath, MaximizeIcon, Calendar, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -39,9 +39,11 @@ const PropertyCard = ({
   propertyType,
   onClick,
 }: PropertyCardProps) => {
+  const navigate = useNavigate();
+  const handleDetails = () => navigate(`/imovel/${id}`);
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg group animate-fade-in">
-      <div className="relative overflow-hidden h-48 cursor-pointer" onClick={onClick}>
+    <Card className="overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-lg group animate-fade-in">
+      <div className="relative overflow-hidden h-48 cursor-pointer" onClick={handleDetails}>
         <img
           src={imageUrl}
           alt={title}
@@ -53,7 +55,7 @@ const PropertyCard = ({
       </div>
       <CardHeader className="p-4 pb-2">
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-bold line-clamp-1 cursor-pointer" onClick={onClick}>{title}</h3>
+          <h3 className="text-lg font-bold line-clamp-1 cursor-pointer" onClick={handleDetails}>{title}</h3>
           <p className="text-estate-primary font-semibold">
             {price.toLocaleString('pt-BR', {
               style: 'currency',
@@ -82,11 +84,11 @@ const PropertyCard = ({
           </div>
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-2 flex items-center justify-between">
+      <CardFooter className="p-4 pt-2 mt-auto flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <Button 
           variant="outline" 
           size="sm" 
-          className="gap-1 text-estate-primary border-estate-primary hover:bg-estate-primary/5"
+          className="gap-1 text-estate-primary border-estate-primary hover:bg-estate-primary/5 w-full sm:w-auto"
           onClick={onClick}
         >
           <Calendar className="h-4 w-4" />
@@ -95,8 +97,8 @@ const PropertyCard = ({
         <Button 
           variant="ghost" 
           size="sm" 
-          className="gap-1"
-          onClick={onClick}
+          className="gap-1 w-full sm:w-auto"
+          onClick={handleDetails}
         >
           <span>Ver detalhes</span>
           <ArrowRight className="h-4 w-4" />

@@ -11,7 +11,8 @@ import {
   HelpCircle,
   ChevronDown,
   ChevronRight,
-  X
+  X,
+  UserCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -80,29 +81,40 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
   return (
     <>
-      {/* Overlay for mobile */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
-          onClick={onClose}
-        />
-      )}
+      {/* Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={onClose}
+      />
       
+      {/* Sidebar */}
       <aside 
-        className={cn(
-          "fixed top-0 left-0 w-64 h-full bg-white border-r border-slate-100 shadow-lg z-50 transition-transform duration-300 ease-in-out lg:translate-x-0 transform pt-16",
+        className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        )}
+        }`}
       >
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="absolute top-4 right-4 lg:hidden" 
-          onClick={onClose}
-        >
-          <X className="h-5 w-5" />
-          <span className="sr-only">Fechar menu</span>
-        </Button>
+        <div className="flex items-center justify-between p-4 border-b">
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/logo.png" alt="Logo" className="h-8 w-8" />
+            <span className="font-bold text-xl">Imobiliária</span>
+          </Link>
+          <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-lg">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Botão de Login */}
+        <div className="p-4 border-b">
+          <Link 
+            to="/login" 
+            className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-estate-primary to-estate-secondary text-white shadow-md rounded-full font-semibold px-6 py-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:from-estate-secondary hover:to-estate-primary focus:ring-2 focus:ring-estate-primary focus:outline-none"
+          >
+            <UserCircle className="h-4 w-4" />
+            <span>Login</span>
+          </Link>
+        </div>
         
         <div className="px-3 py-4">
           <nav className="space-y-6">

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,7 +65,7 @@ const LoginForm = () => {
           </div>
           <Button 
             type="submit" 
-            className="w-full bg-estate-primary hover:bg-estate-secondary"
+            className="w-full bg-gradient-to-r from-estate-primary to-estate-secondary text-white shadow-lg rounded-full font-semibold text-lg py-3 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:from-estate-secondary hover:to-estate-primary focus:ring-2 focus:ring-estate-primary focus:outline-none"
             disabled={loading}
           >
             {loading ? (

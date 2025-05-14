@@ -6,8 +6,15 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <section className="relative w-full h-[70vh] overflow-hidden bg-gradient-to-r from-estate-primary to-estate-secondary rounded-b-3xl shadow-lg">
-      <div className="absolute inset-0 bg-estate-dark/20 rounded-b-3xl"></div>
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
+      {/* Mapa de fundo */}
+      <img
+        src="https://media.istockphoto.com/id/1307339176/pt/vetorial/city-map-with-some-location-tags.jpg?s=2048x2048&w=is&k=20&c=PA2RyBxue2N1txpL8Mn5EBJ4nFv67XRFfeZq0S-_6F4="
+        alt="Mapa de cidade com marcadores"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ filter: 'brightness(0.5) blur(1px)' }}
+      />
+      <div className="absolute inset-0 bg-estate-dark/20 rounded-b-3xl z-10"></div>
+      <div className="absolute inset-0 z-20 flex items-center justify-center">
         <div className="container px-4 mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in drop-shadow-lg">
             Pedro André Negócios Imobiliários<br />Seu novo lar começa aqui

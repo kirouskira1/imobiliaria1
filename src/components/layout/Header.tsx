@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { UserCircle, Menu, MapPin, LogIn, User } from "lucide-react";
+import { UserCircle, UserPlus, Menu, MapPin, LogIn, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Dialog,
@@ -29,6 +29,15 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [isTop, setIsTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsTop(window.scrollY < 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => { window.removeEventListener('scroll', handleScroll); };
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,7 +102,7 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100 shadow-sm">
+    <header className={`fixed top-0 left-0 w-full z-50 border-b border-slate-100 shadow-sm transition-all duration-300 ${isTop ? 'bg-white/40 backdrop-blur-md' : 'bg-white/95 backdrop-blur'}`}>
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
         <div className="flex items-center gap-4">
           <Button 
@@ -107,10 +116,8 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
           </Button>
           
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-bold text-xl flex items-center">
-              <span className="rounded-full bg-estate-primary text-white px-2 py-1 mr-2 text-2xl" style={{fontFamily: 'sans-serif', fontWeight: 900}}>B</span>
-              Pedro André <span className="text-estate-primary ml-1">Negócios Imobiliários</span>
-            </span>
+            <img src="/logo.png" alt="Logo" className="h-10 w-10 mr-2" />
+            <span className="font-bold text-2xl tracking-wide text-estate-primary">LOREM IPSUM</span>
           </Link>
         </div>
         
@@ -128,19 +135,11 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
           ) : (
             <>
               <Button 
-                variant="ghost" 
-                className="gap-2 hover:bg-slate-100 rounded-lg transition-colors"
-                onClick={() => setLoginOpen(true)}
-              >
-                <LogIn className="h-4 w-4" />
-                <span className="hidden md:inline">Login</span>
-              </Button>
-              <Button 
                 variant="default" 
                 className="gap-2 bg-estate-primary hover:bg-estate-secondary transition-all duration-300 rounded-lg border-2 border-estate-primary hover:border-estate-secondary hover:shadow-md"
                 onClick={() => setRegisterOpen(true)}
               >
-                <UserCircle className="h-4 w-4" />
+                <UserPlus className="h-4 w-4" />
                 <span className="hidden md:inline">Cadastrar</span>
               </Button>
             </>
@@ -192,7 +191,7 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
                 type="submit" 
                 className="bg-estate-primary hover:bg-estate-secondary"
               >
-                <LogIn className="h-4 w-4 mr-2" />
+                <UserCircle className="h-4 w-4 mr-2" />
                 Entrar
               </Button>
             </DialogFooter>
